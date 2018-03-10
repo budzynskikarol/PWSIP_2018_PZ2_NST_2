@@ -1,1 +1,1 @@
-# Proj-Zesp-II
+# Projekt-Zespolowy-II
