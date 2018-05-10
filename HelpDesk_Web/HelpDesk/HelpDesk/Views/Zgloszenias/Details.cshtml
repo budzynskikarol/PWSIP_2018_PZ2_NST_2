@@ -1,0 +1,66 @@
+﻿@model HelpDesk.Models.Zgloszenia
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Zgloszenia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategorie.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategorie.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Statusy.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Statusy.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Komentarz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Komentarz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uzytkownik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uzytkownik)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
