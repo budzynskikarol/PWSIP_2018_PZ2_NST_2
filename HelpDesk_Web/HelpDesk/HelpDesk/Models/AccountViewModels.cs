@@ -70,15 +70,29 @@ namespace HelpDesk.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} musi zawierać co najmniej następującą liczbę znaków: {2}.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Hasło")]
-        public string Password { get; set; }
+        [Display(Name = "Imię")]
+        public string Imie { get; set; }
 
-        [DataType(DataType.Password)]
-        [Display(Name = "Potwierdź hasło")]
-        [Compare("Password", ErrorMessage = "Hasło i jego potwierdzenie są niezgodne.")]
-        public string ConfirmPassword { get; set; }
+        [Required]
+        [Display(Name = "Nazwisko")]
+        public string Nazwisko { get; set; }
+
+        public Kategorie Kategorie { get; set; }
+
+        [Required]
+        [Display(Name = "Kategoria")]
+        public int KategorieId { get; set; }
+
+        //[Required]
+        //[StringLength(100, ErrorMessage = "{0} musi zawierać co najmniej następującą liczbę znaków: {2}.", MinimumLength = 6)]
+        //[DataType(DataType.Password)]
+        //[Display(Name = "Hasło")]
+        //public string Password { get; set; }
+
+        //[DataType(DataType.Password)]
+        //[Display(Name = "Potwierdź hasło")]
+        //[Compare("Password", ErrorMessage = "Hasło i jego potwierdzenie są niezgodne.")]
+        //public string ConfirmPassword { get; set; }
     }
 
     public class ResetPasswordViewModel

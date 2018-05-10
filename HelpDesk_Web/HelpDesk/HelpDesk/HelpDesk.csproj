@@ -195,9 +195,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805101638195_Inicjacja.cs" />
+    <Compile Include="Migrations\201805101638195_Inicjacja.Designer.cs">
+      <DependentUpon>201805101638195_Inicjacja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805101644383_DodanieTabel.cs" />
+    <Compile Include="Migrations\201805101644383_DodanieTabel.Designer.cs">
+      <DependentUpon>201805101644383_DodanieTabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Kategorie.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Statusy.cs" />
+    <Compile Include="Models\Zgloszenia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -274,6 +286,14 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805101638195_Inicjacja.resx">
+      <DependentUpon>201805101638195_Inicjacja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805101644383_DodanieTabel.resx">
+      <DependentUpon>201805101644383_DodanieTabel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
