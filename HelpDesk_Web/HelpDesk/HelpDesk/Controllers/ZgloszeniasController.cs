@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HelpDesk.Models;
+using Microsoft.AspNet.Identity;
 
 namespace HelpDesk.Controllers
 {
@@ -17,8 +18,23 @@ namespace HelpDesk.Controllers
         // GET: Zgloszenias
         public ActionResult Index()
         {
-            var zgloszenias = db.Zgloszenias.Include(z => z.Kategorie).Include(z => z.Statusy);
-            return View(zgloszenias.ToList());
+            ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+            if (user.KategorieId == 8)
+            {
+                var zgloszenias = db.Zgloszenias.Include(z => z.Kategorie).Include(z => z.Statusy).Where(z=>z.Uzytkownik == User.Identity.Name);
+                return View(zgloszenias.ToList());
+
+            }
+            else if(user.KategorieId == 0)
+            {
+                var zgloszenias = db.Zgloszenias.Include(z => z.Kategorie).Include(z => z.Statusy);
+                return View(zgloszenias.ToList());
+            }
+            else
+            {
+                var zgloszenias = db.Zgloszenias.Include(z => z.Kategorie).Include(z => z.Statusy).Where(z=>z.KategorieId == user.KategorieId);
+                return View(zgloszenias.ToList());
+            }
         }
 
         // GET: Zgloszenias/Details/5
@@ -33,6 +49,11 @@ namespace HelpDesk.Controllers
             {
                 return HttpNotFound();
             }
+            Kategorie a = db.Kategories.Find(zgloszenia.KategorieId);
+            ViewBag.Kategoria = a.Nazwa;
+            Statusy b = db.Statusys.Find(zgloszenia.StatusyId);
+            ViewBag.Status = b.Nazwa;
+
             return View(zgloszenia);
         }
 
@@ -53,6 +74,10 @@ namespace HelpDesk.Controllers
         {
             if (ModelState.IsValid)
             {
+                zgloszenia.StatusyId = 1;
+                zgloszenia.Uzytkownik = User.Identity.Name;
+                zgloszenia.Komentarz = "";
+                zgloszenia.DataDodania = DateTime.Now;
                 db.Zgloszenias.Add(zgloszenia);
                 db.SaveChanges();
                 return RedirectToAction("Index");
