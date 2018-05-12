@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace HelpDesk.Controllers
 {
+    [Authorize]
     public class ZgloszeniasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -40,6 +41,8 @@ namespace HelpDesk.Controllers
         // GET: Zgloszenias/Details/5
         public ActionResult Details(int? id)
         {
+            ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -53,6 +56,10 @@ namespace HelpDesk.Controllers
             ViewBag.Kategoria = a.Nazwa;
             Statusy b = db.Statusys.Find(zgloszenia.StatusyId);
             ViewBag.Status = b.Nazwa;
+            if (user.KategorieId == zgloszenia.KategorieId || user.KategorieId == 8)
+            {
+                ViewBag.admin = true;
+            }
 
             return View(zgloszenia);
         }
@@ -60,7 +67,7 @@ namespace HelpDesk.Controllers
         // GET: Zgloszenias/Create
         public ActionResult Create()
         {
-            ViewBag.KategorieId = new SelectList(db.Kategories, "Id", "Nazwa");
+            ViewBag.KategorieId = new SelectList(db.Kategories.Where(z=> z.Id < 8), "Id", "Nazwa");
             ViewBag.StatusyId = new SelectList(db.Statusys, "Id", "Nazwa");
             return View();
         }

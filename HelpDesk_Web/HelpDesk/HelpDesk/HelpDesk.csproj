@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201805112032573_DodanieDatyDoZgloszen.Designer.cs">
       <DependentUpon>201805112032573_DodanieDatyDoZgloszen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805120729342_DodanieAdminaDoTabeliKategorii.cs" />
+    <Compile Include="Migrations\201805120729342_DodanieAdminaDoTabeliKategorii.Designer.cs">
+      <DependentUpon>201805120729342_DodanieAdminaDoTabeliKategorii.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -306,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805112032573_DodanieDatyDoZgloszen.resx">
       <DependentUpon>201805112032573_DodanieDatyDoZgloszen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805120729342_DodanieAdminaDoTabeliKategorii.resx">
+      <DependentUpon>201805120729342_DodanieAdminaDoTabeliKategorii.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

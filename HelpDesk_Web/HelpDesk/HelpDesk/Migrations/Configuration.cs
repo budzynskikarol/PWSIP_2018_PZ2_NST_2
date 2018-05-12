@@ -1,5 +1,8 @@
 namespace HelpDesk.Migrations
 {
+    using HelpDesk.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,6 +17,7 @@ namespace HelpDesk.Migrations
 
         protected override void Seed(HelpDesk.Models.ApplicationDbContext context)
         {
+            SeedAccountAdmin(context, "admin@admin.pl", "Adam", "Szyszkowski", "!QAZ2wsx");
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -26,6 +30,27 @@ namespace HelpDesk.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+        }
+
+        private void SeedAccountAdmin(ApplicationDbContext context, string email, string firstname, string lastname, string password)
+        {
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+
+            if (!context.Users.Any())
+            {
+                var Admin = new ApplicationUser
+                {
+                    Imie = firstname,
+                    Nazwisko = lastname,
+                    Email = email,
+                    UserName = email,
+                    //ChangePasswordDate = DateTime.Now.AddDays(-1),
+                    KategorieId = 8
+                };
+
+                var wynik = userManager.Create(Admin, password);
+            }
         }
     }
 }

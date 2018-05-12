@@ -52,7 +52,7 @@
     </dl>
 </div>
 <p>
-    @if (User.Identity.Name == "b@b.b")
+    @if (ViewBag.admin)
     {
         @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id })
     }
