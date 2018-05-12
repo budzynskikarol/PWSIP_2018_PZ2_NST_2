@@ -4,14 +4,13 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
 <div>
     <h4>Zgloszenia</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Kategorie.Nazwa)
+            Kategoria
         </dt>
 
         <dd>
@@ -19,7 +18,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Statusy.Nazwa)
+            Status
         </dt>
 
         <dd>
@@ -50,17 +49,13 @@
             @Html.DisplayFor(model => model.Komentarz)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Uzytkownik)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Uzytkownik)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (User.Identity.Name == "b@b.b")
+    {
+        @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id })
+    }
+    
+    @Html.ActionLink("Powrót", "Index", null, new { @class = "btn btn-primary" })
 </p>

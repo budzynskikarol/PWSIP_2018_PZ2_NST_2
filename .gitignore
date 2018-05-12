@@ -316,6 +316,5 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
-
-/HelpDesk_Web/HelpDesk/HelpDesk/App_Data/db.mdf.old
-/HelpDesk_Web/HelpDesk/HelpDesk/App_Data/db_log.ldf.old
+*.mdf
+*.ldf

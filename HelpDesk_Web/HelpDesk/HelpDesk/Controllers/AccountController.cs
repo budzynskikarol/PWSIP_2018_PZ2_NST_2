@@ -17,6 +17,8 @@ namespace HelpDesk.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
+
 
         public AccountController()
         {
@@ -139,6 +141,7 @@ namespace HelpDesk.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.KategorieId = new SelectList(db.Kategories, "Id", "Nazwa");
             return View();
         }
 
@@ -151,7 +154,7 @@ namespace HelpDesk.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Imie = model.Imie, Nazwisko = model.Nazwisko, KategorieId = model.KategorieId };
                 var result = await UserManager.CreateAsync(user, "!QAZ2wsx");
                 if (result.Succeeded)
                 {

@@ -18,5 +18,6 @@ namespace HelpDesk.Models
         public Kategorie Kategorie { get; set; }
         public int KategorieId { get; set; }
         public string Uzytkownik { get; set; }
+        public DateTime DataDodania { get; set; }
     }
 }

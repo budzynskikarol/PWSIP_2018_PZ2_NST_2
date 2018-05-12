@@ -170,7 +170,6 @@ namespace WindowsFormsApplication1
                 button2.Enabled = true;
                 button3.Enabled = true;
             }
-
         }
     }
 }
