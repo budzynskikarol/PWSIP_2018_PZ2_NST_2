@@ -26,14 +26,14 @@ namespace HelpDesk.Controllers
                 return View(zgloszenias.ToList());
 
             }
-            else if(user.KategorieId == 0)
+            else if(user.KategorieId == 9)
             {
                 var zgloszenias = db.Zgloszenias.Include(z => z.Kategorie).Include(z => z.Statusy);
                 return View(zgloszenias.ToList());
             }
             else
             {
-                var zgloszenias = db.Zgloszenias.Include(z => z.Kategorie).Include(z => z.Statusy).Where(z=>z.KategorieId == user.KategorieId);
+                var zgloszenias = db.Zgloszenias.Include(z => z.Kategorie).Include(z => z.Statusy).Where(z=>z.KategorieId == user.KategorieId || z.Uzytkownik == User.Identity.Name);
                 return View(zgloszenias.ToList());
             }
         }
@@ -56,9 +56,11 @@ namespace HelpDesk.Controllers
             ViewBag.Kategoria = a.Nazwa;
             Statusy b = db.Statusys.Find(zgloszenia.StatusyId);
             ViewBag.Status = b.Nazwa;
-            if (user.KategorieId == zgloszenia.KategorieId || user.KategorieId == 8)
+            ViewBag.edycja = 0;
+
+            if (user.KategorieId == zgloszenia.KategorieId || user.KategorieId == 9)
             {
-                ViewBag.admin = true;
+                ViewBag.edycja = 1;
             }
 
             return View(zgloszenia);
@@ -117,11 +119,19 @@ namespace HelpDesk.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nazwa,Opis,Komentarz,StatusyId,KategorieId,Uzytkownik")] Zgloszenia zgloszenia)
+        public ActionResult Edit([Bind(Include = "Id,Nazwa,Opis,Komentarz,StatusyId,KategorieId,Uzytkownik,DataDodania")] Zgloszenia zgloszenia)
         {
+            Zgloszenia stary_wpis = db.Zgloszenias.Find(zgloszenia.Id);
+
             if (ModelState.IsValid)
             {
-                db.Entry(zgloszenia).State = EntityState.Modified;
+                stary_wpis.Nazwa = zgloszenia.Nazwa;
+                stary_wpis.Opis = zgloszenia.Opis;
+                stary_wpis.Komentarz = zgloszenia.Komentarz;
+                stary_wpis.StatusyId = zgloszenia.StatusyId;
+                stary_wpis.KategorieId = zgloszenia.KategorieId;
+
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

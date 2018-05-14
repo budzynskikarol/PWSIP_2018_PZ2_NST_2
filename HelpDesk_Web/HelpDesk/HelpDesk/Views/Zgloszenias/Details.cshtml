@@ -52,9 +52,9 @@
     </dl>
 </div>
 <p>
-    @if (ViewBag.admin)
+    @if (ViewBag.edycja == 1)
     {
-        @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id })
+        @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }, new {@class = "btn btn-warning" })
     }
     
     @Html.ActionLink("Powrót", "Index", null, new { @class = "btn btn-primary" })

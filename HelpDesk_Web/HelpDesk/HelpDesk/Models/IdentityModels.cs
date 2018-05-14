@@ -28,7 +28,7 @@ namespace HelpDesk.Models
         public DbSet<Kategorie> Kategories { get; set; }
         public DbSet<Statusy> Statusys { get; set; }
         public DbSet<Zgloszenia> Zgloszenias { get; set; }
-
+        public DbSet<Wiadomosci> Wiadomoscis { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

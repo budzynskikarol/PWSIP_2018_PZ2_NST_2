@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HelpDesk.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace HelpDesk.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
             return View();
@@ -22,6 +25,7 @@ namespace HelpDesk.Controllers
 
         public ActionResult Contact()
         {
+            ViewBag.test = db.Users;
             ViewBag.Message = "Your contact page.";
 
             return View();

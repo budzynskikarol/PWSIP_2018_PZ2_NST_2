@@ -38,6 +38,7 @@ namespace HelpDesk
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
+            this.PasswordHasher = new MojeHaslo();
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
@@ -59,6 +60,8 @@ namespace HelpDesk
                 RequireLowercase = true,
                 RequireUppercase = true,
             };
+
+            manager.PasswordHasher = new MojeHaslo();
 
             // Konfiguruj ustawienia domyślne blokady użytkownika
             manager.UserLockoutEnabledByDefault = true;

@@ -158,8 +158,8 @@ namespace HelpDesk.Controllers
                 var result = await UserManager.CreateAsync(user, "!QAZ2wsx");
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // Aby uzyskać więcej informacji o sposobie włączania potwierdzania konta i resetowaniu hasła, odwiedź stronę https://go.microsoft.com/fwlink/?LinkID=320771
                     // Wyślij wiadomość e-mail z tym łączem
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
