@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
+
         // Połączenie z bazą lokalną
         string conn_str = Properties.Settings.Default.dbConnectionString;
 
@@ -46,29 +47,20 @@ namespace WindowsFormsApplication1
                     SqlCommand command = new SqlCommand("SELECT  UserName, PasswordHash, KategorieId FROM AspNetUsers WHERE Username=@Username", connection);
                     command.Parameters.Clear();
                     command.Parameters.Add("@Username", System.Data.SqlDbType.NVarChar).Value = TLogin.Text;
-                    try
-                    {
-                        rdr = command.ExecuteReader();
-                        while (rdr.Read())
-                        {
-                            upraw = Int32.Parse(rdr[2].ToString());
-                            pass = rdr[1].ToString();
-                            username2 = rdr[0].ToString();
-                        }
-                    }
-                    catch (Exception err)
-                    {
+                    rdr = command.ExecuteReader();
 
-                    }
-                    finally
+                    while (rdr.Read())
                     {
-                        if (rdr != null) rdr.Close();
-                        connection.Close();
+                        upraw = Int32.Parse(rdr[2].ToString());
+                        pass = rdr[1].ToString();
+                        username2 = rdr[0].ToString();
                     }
+
+                    if (rdr != null) rdr.Close();
+                    connection.Close();
                 }
             }
             
-            //utworzenie nowego wątku, uruchamiającego nową aplikację
             if (pass != "")
             {
                 if (TPass.Text == pass)
@@ -79,7 +71,6 @@ namespace WindowsFormsApplication1
                         Admin.label1.Text = upraw.ToString();
                         Admin.ShowDialog();
 
-                        //zamknięcie starego wątku
                         Application.ExitThread();
                     }
                     else if (upraw == 9)
@@ -88,7 +79,6 @@ namespace WindowsFormsApplication1
                         User.label1.Text = upraw.ToString();
                         User.ShowDialog();
 
-                        //zamknięcie starego wątku
                         Application.ExitThread();
                     }
                     else
@@ -97,7 +87,6 @@ namespace WindowsFormsApplication1
                         Specjalista.label1.Text = upraw.ToString();
                         Specjalista.ShowDialog();
 
-                        //zamknięcie starego wątku
                         Application.ExitThread();
                     }
                 }
