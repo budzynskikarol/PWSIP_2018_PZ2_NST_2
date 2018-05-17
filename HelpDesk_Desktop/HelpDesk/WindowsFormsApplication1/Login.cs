@@ -30,6 +30,9 @@ namespace WindowsFormsApplication1
         {
             string username2 = null;
             string pass = null;
+            string imie = null;
+            string nazwisko = null;
+            string telefon = null;
             int upraw = 0;
 
             using (SqlConnection connection = new SqlConnection(conn_str))
@@ -44,7 +47,7 @@ namespace WindowsFormsApplication1
                 }
                 if (connection.State == System.Data.ConnectionState.Open)
                 {
-                    SqlCommand command = new SqlCommand("SELECT  UserName, PasswordHash, KategorieId FROM AspNetUsers WHERE Username=@Username", connection);
+                    SqlCommand command = new SqlCommand("SELECT  UserName, PasswordHash, KategorieId, Imie, Nazwisko, PhoneNumber FROM AspNetUsers WHERE Username=@Username", connection);
                     command.Parameters.Clear();
                     command.Parameters.Add("@Username", System.Data.SqlDbType.NVarChar).Value = TLogin.Text;
                     rdr = command.ExecuteReader();
@@ -54,6 +57,9 @@ namespace WindowsFormsApplication1
                         upraw = Int32.Parse(rdr[2].ToString());
                         pass = rdr[1].ToString();
                         username2 = rdr[0].ToString();
+                        imie = rdr[3].ToString();
+                        nazwisko = rdr[4].ToString();
+                        telefon = rdr[5].ToString();
                     }
 
                     if (rdr != null) rdr.Close();
@@ -68,7 +74,12 @@ namespace WindowsFormsApplication1
                     if (upraw == 9)
                     {
                         Form2 Admin = new Form2();
-                        Admin.label1.Text = upraw.ToString();
+                        Admin.label1.Text = TLogin.Text;
+                        Admin.label28.Text = imie + " " + nazwisko;
+                        Admin.label29.Text = telefon;
+                        Admin.label30.Text = username2;
+                        Admin.label26.Text = imie + Admin.label26.Text;
+                        Admin.label37.Text = pass;
                         Admin.ShowDialog();
 
                         Application.ExitThread();
