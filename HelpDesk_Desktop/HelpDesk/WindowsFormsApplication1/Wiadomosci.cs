@@ -79,16 +79,23 @@ namespace WindowsFormsApplication1
         {
             textBox1.Text = label2.Text;
             textBox2.Text = null;
-            textBox3.Text = DateTime.Now.ToString();
             button1.Enabled = true;
             label4.Visible = false;
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            updateDataGrid();
         }
 
         private void Wiadomosci_Load(object sender, EventArgs e)
         {
             updateDataGrid();
             textBox1.Text = label2.Text;
-            textBox3.Text = DateTime.Now.ToString();
+            Timer timer = new Timer();
+            timer.Interval = (5 * 1000);
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
         }
 
         private void button1_Click(object sender, EventArgs e)

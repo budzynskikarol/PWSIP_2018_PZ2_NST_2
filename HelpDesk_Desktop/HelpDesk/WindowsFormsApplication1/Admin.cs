@@ -384,7 +384,19 @@ namespace WindowsFormsApplication1
             this.updateDataGrid1();
             this.textBox5.Text = DateTime.Now.ToString();
             this.textBox10.Text = this.label1.Text;
+            Timer timer = new Timer();
+            timer.Interval = (1 * 1000);
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
+            label39.Text = DateTime.Now.ToLongTimeString();
+            label40.Text = DateTime.Now.ToLongDateString();
         }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            label39.Text = DateTime.Now.ToLongTimeString();
+        }
+
 
         private void TextBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -475,10 +487,7 @@ namespace WindowsFormsApplication1
                 String sql = "INSERT INTO Zgloszenias (Nazwa, Opis, Komentarz, StatusyId, KategorieId, Uzytkownik, DataDodania) " +
                 "VALUES (@Nazwa, @Opis, @Komentarz, @StatusyId, @KategorieId, @Uzytkownik, @DataDodania)";
                 this.updateDatabase(sql, 3);
-                button8.Enabled = false;
-                button7.Enabled = true;
-                button6.Enabled = true;
-                button9.Enabled = true;
+                resetAll2();
             }
         }
 

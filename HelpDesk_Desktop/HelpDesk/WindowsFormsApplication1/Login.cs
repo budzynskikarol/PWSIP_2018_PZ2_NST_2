@@ -84,10 +84,15 @@ namespace WindowsFormsApplication1
 
                         Application.ExitThread();
                     }
-                    else if (upraw == 9)
+                    else if (upraw == 8)
                     {
                         User User = new User();
-                        User.label1.Text = upraw.ToString();
+                        User.label2.Text = TLogin.Text;
+                        User.label28.Text = imie + " " + nazwisko;
+                        User.label29.Text = telefon;
+                        User.label30.Text = username2;
+                        User.label26.Text = imie + User.label26.Text;
+                        User.label37.Text = pass;
                         User.ShowDialog();
 
                         Application.ExitThread();
