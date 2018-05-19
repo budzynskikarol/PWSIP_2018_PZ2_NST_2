@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsApplication1
 {
@@ -20,13 +21,13 @@ namespace WindowsFormsApplication1
         bool wszystko_ok = true;
         bool wszystko_ok2 = true;
         bool wszystko_ok3 = true;
-  
+
         public Form2()
         {
             this.setConnection();
             InitializeComponent();
         }
-        
+
         private void setConnection()
         {
             // Połączenie z bazą lokalną
@@ -37,6 +38,35 @@ namespace WindowsFormsApplication1
 
             con = new SqlConnection(conn_str);
             con.Open();
+        }
+
+        private bool IsStrongPassword(string password)
+        {
+            // dlugosc hasla min 8
+            if (password.Length < 8)
+                return false;
+
+            // Znaki specjalne min 1
+            if (!(password.Contains("!") || password.Contains("@") || password.Contains("#") || password.Contains("$") ||
+                password.Contains("%") || password.Contains("^") || password.Contains("&") || password.Contains("*") ||
+                password.Contains("(") || password.Contains(")") || password.Contains("-") || password.Contains("_") ||
+                password.Contains("+") || password.Contains("=")))
+                return false;
+            
+            // Inne znaki niz !@#$%^&*()_+-=
+            if (password.Contains("`") || password.Contains("{") || password.Contains("[") || password.Contains("}") ||
+                password.Contains("]") || password.Contains(@"\") || password.Contains("|") || password.Contains('"') ||
+                password.Contains("'") || password.Contains(":") || password.Contains(";") || password.Contains("/") ||
+                password.Contains("?") || password.Contains(">") || password.Contains(".") || password.Contains(",") || 
+                password.Contains("<") || password.Contains(" ")
+                )
+                return false;
+
+            // wielkie litery min 1
+            if (!password.Any(c => char.IsUpper(c)))
+                return false;
+
+            return true;
         }
 
         private string RandomString(int range)
@@ -305,7 +335,7 @@ namespace WindowsFormsApplication1
                 label17.Visible = true;
             }
 
-            if (textBox6.Text.Length < 8)
+            if (!IsStrongPassword(textBox6.Text))
             {
                 wszystko_ok = false;
                 label18.Visible = true;
@@ -358,17 +388,15 @@ namespace WindowsFormsApplication1
                 wszystko_ok3 = false;
                 label34.Visible = true;
             }
-
-            if (textBox12.TextLength < 8)
-            {
-                wszystko_ok3 = false;
-                label35.Visible = true;
-            }
-
-            if (textBox11.Text == textBox12.Text)
+            else if (textBox11.Text == textBox12.Text)
             {
                 wszystko_ok3 = false;
                 label38.Visible = true;
+            }
+            else if (!(IsStrongPassword(textBox12.Text)))
+            {
+                wszystko_ok3 = false;
+                label35.Visible = true;
             }
 
             if (textBox13.Text != textBox12.Text)

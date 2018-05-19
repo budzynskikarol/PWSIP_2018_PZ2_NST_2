@@ -43,6 +43,7 @@
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label38 = new System.Windows.Forms.Label();
@@ -77,11 +78,10 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -250,6 +250,16 @@
             this.tabPage3.Text = "Informacje";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(723, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "label4";
+            this.label4.Visible = false;
+            // 
             // label37
             // 
             this.label37.AutoSize = true;
@@ -294,18 +304,19 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(98, 185);
+            this.button11.Location = new System.Drawing.Point(98, 191);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(107, 23);
             this.button11.TabIndex = 7;
             this.button11.Text = "Zmień hasło";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // label36
             // 
             this.label36.AutoSize = true;
             this.label36.ForeColor = System.Drawing.Color.Red;
-            this.label36.Location = new System.Drawing.Point(6, 163);
+            this.label36.Location = new System.Drawing.Point(6, 181);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(86, 13);
             this.label36.TabIndex = 14;
@@ -314,13 +325,12 @@
             // 
             // label35
             // 
-            this.label35.AutoSize = true;
             this.label35.ForeColor = System.Drawing.Color.Red;
             this.label35.Location = new System.Drawing.Point(6, 107);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(182, 13);
+            this.label35.Size = new System.Drawing.Size(305, 35);
             this.label35.TabIndex = 13;
-            this.label35.Text = "Proszę podać hasło (min. 8 znaków)!";
+            this.label35.Text = "Hasło min. 8 znaków, 1 duża litera, 1 znak specjalny (!@#$%^&*()_+-=)!";
             this.label35.Visible = false;
             // 
             // label34
@@ -336,7 +346,7 @@
             // 
             // textBox13
             // 
-            this.textBox13.Location = new System.Drawing.Point(9, 140);
+            this.textBox13.Location = new System.Drawing.Point(6, 158);
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(302, 20);
             this.textBox13.TabIndex = 10;
@@ -344,7 +354,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(6, 124);
+            this.label33.Location = new System.Drawing.Point(6, 142);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(104, 13);
             this.label33.TabIndex = 11;
@@ -642,6 +652,28 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Zgłoszenia";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(15, 345);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 13);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "Proszę wybrać kategorię!";
+            this.label5.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(18, 322);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(242, 20);
+            this.textBox1.TabIndex = 31;
+            this.textBox1.Visible = false;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -659,38 +691,6 @@
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "label1";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(723, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "label4";
-            this.label4.Visible = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(18, 322);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(242, 20);
-            this.textBox1.TabIndex = 31;
-            this.textBox1.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(15, 345);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(126, 13);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "Proszę wybrać kategorię!";
-            this.label5.Visible = false;
             // 
             // Specjalista
             // 

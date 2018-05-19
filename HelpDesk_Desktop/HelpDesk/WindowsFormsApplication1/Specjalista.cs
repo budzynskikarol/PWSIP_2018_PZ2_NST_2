@@ -36,7 +36,7 @@ namespace WindowsFormsApplication1
             con = new SqlConnection(conn_str);
             con.Open();
         }
-
+        
         private void updateDataGrid1()
         {
             SqlCommand command = new SqlCommand("SELECT z.Id, z.Uzytkownik, z.Nazwa, z.Opis, z.Komentarz, s.Nazwa, k.Nazwa, z.DataDodania FROM Zgloszenias AS z INNER JOIN Statusies AS s ON z.StatusyId=s.Id INNER JOIN Kategories AS k ON z.KategorieId=k.Id WHERE z.KategorieId=@KategorieId", con);
@@ -55,6 +55,35 @@ namespace WindowsFormsApplication1
             dataGridView2.Columns[5].HeaderCell.Value = "Status";
             dataGridView2.Columns[6].HeaderCell.Value = "Kategoria";
             dataGridView2.Columns[7].HeaderCell.Value = "Data dodania";
+        }
+
+        private bool IsStrongPassword(string password)
+        {
+            // dlugosc hasla min 8
+            if (password.Length < 8)
+                return false;
+
+            // Znaki specjalne min 1
+            if (!(password.Contains("!") || password.Contains("@") || password.Contains("#") || password.Contains("$") ||
+                password.Contains("%") || password.Contains("^") || password.Contains("&") || password.Contains("*") ||
+                password.Contains("(") || password.Contains(")") || password.Contains("-") || password.Contains("_") ||
+                password.Contains("+") || password.Contains("=")))
+                return false;
+
+            // Inne znaki niz !@#$%^&*()_+-=
+            if (password.Contains("`") || password.Contains("{") || password.Contains("[") || password.Contains("}") ||
+                password.Contains("]") || password.Contains(@"\") || password.Contains("|") || password.Contains('"') ||
+                password.Contains("'") || password.Contains(":") || password.Contains(";") || password.Contains("/") ||
+                password.Contains("?") || password.Contains(">") || password.Contains(".") || password.Contains(",") ||
+                password.Contains("<") || password.Contains(" ")
+                )
+                return false;
+
+            // wielkie litery min 1
+            if (!password.Any(c => char.IsUpper(c)))
+                return false;
+
+            return true;
         }
 
         private void GetIdKat(string nazwa)
@@ -217,17 +246,15 @@ namespace WindowsFormsApplication1
                 wszystko_ok3 = false;
                 label34.Visible = true;
             }
-
-            if (textBox12.TextLength < 8)
-            {
-                wszystko_ok3 = false;
-                label35.Visible = true;
-            }
-
-            if (textBox11.Text == textBox12.Text)
+            else if (textBox11.Text == textBox12.Text)
             {
                 wszystko_ok3 = false;
                 label38.Visible = true;
+            }
+            else if (!(IsStrongPassword(textBox12.Text)))
+            {
+                wszystko_ok3 = false;
+                label35.Visible = true;
             }
 
             if (textBox13.Text != textBox12.Text)
