@@ -416,8 +416,8 @@ namespace WindowsFormsApplication1
                 String sql = "INSERT INTO AspNetUsers (Id, Imie, Nazwisko, PhoneNumber, UserName, PasswordHash, KategorieId) " +
                 "VALUES (@Id, @Imie, @Nazwisko, @PhoneNumber, @UserName, @PasswordHash, @KategorieId)";
                 this.updateDatabase(sql, 0);
+                resetAll();
             }
-            resetAll();
         }
 
         private void button2_Click(object sender, EventArgs e)
