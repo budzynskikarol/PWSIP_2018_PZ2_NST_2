@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace WindowsFormsApplication1 {
+namespace HelpDesk_Desktop {
     
     
     /// <summary>
@@ -4753,7 +4753,7 @@ namespace WindowsFormsApplication1 {
         }
     }
 }
-namespace WindowsFormsApplication1.dbDataSetTableAdapters {
+namespace HelpDesk_Desktop.dbDataSetTableAdapters {
     
     
     /// <summary>
@@ -4918,7 +4918,7 @@ SELECT MigrationId, ContextKey, Model, ProductVersion FROM __MigrationHistory WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApplication1.Properties.Settings.Default.dbConnectionString;
+            this._connection.ConnectionString = global::HelpDesk_Desktop.Properties.Settings.Default.dbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5295,7 +5295,7 @@ SELECT MigrationId, ContextKey, Model, ProductVersion FROM __MigrationHistory WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApplication1.Properties.Settings.Default.dbConnectionString;
+            this._connection.ConnectionString = global::HelpDesk_Desktop.Properties.Settings.Default.dbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5642,7 +5642,7 @@ SELECT MigrationId, ContextKey, Model, ProductVersion FROM __MigrationHistory WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApplication1.Properties.Settings.Default.dbConnectionString;
+            this._connection.ConnectionString = global::HelpDesk_Desktop.Properties.Settings.Default.dbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5990,7 +5990,7 @@ SELECT LoginProvider, ProviderKey, UserId FROM AspNetUserLogins WHERE (LoginProv
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApplication1.Properties.Settings.Default.dbConnectionString;
+            this._connection.ConnectionString = global::HelpDesk_Desktop.Properties.Settings.Default.dbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6355,7 +6355,7 @@ SELECT LoginProvider, ProviderKey, UserId FROM AspNetUserLogins WHERE (LoginProv
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApplication1.Properties.Settings.Default.dbConnectionString;
+            this._connection.ConnectionString = global::HelpDesk_Desktop.Properties.Settings.Default.dbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6752,7 +6752,7 @@ SELECT Id, Email, EmailConfirmed, PasswordHash, SecurityStamp, PhoneNumber, Phon
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApplication1.Properties.Settings.Default.dbConnectionString;
+            this._connection.ConnectionString = global::HelpDesk_Desktop.Properties.Settings.Default.dbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7278,7 +7278,7 @@ SELECT Id, Email, EmailConfirmed, PasswordHash, SecurityStamp, PhoneNumber, Phon
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApplication1.Properties.Settings.Default.dbConnectionString;
+            this._connection.ConnectionString = global::HelpDesk_Desktop.Properties.Settings.Default.dbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7580,7 +7580,7 @@ SELECT Id, Email, EmailConfirmed, PasswordHash, SecurityStamp, PhoneNumber, Phon
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApplication1.Properties.Settings.Default.dbConnectionString;
+            this._connection.ConnectionString = global::HelpDesk_Desktop.Properties.Settings.Default.dbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7908,7 +7908,7 @@ SELECT Id, Nazwa, Opis, Komentarz, StatusyId, KategorieId, Uzytkownik, DataDodan
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApplication1.Properties.Settings.Default.dbConnectionString;
+            this._connection.ConnectionString = global::HelpDesk_Desktop.Properties.Settings.Default.dbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

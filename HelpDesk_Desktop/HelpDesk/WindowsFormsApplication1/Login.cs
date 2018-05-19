@@ -19,10 +19,10 @@ namespace WindowsFormsApplication1
         }
 
         // Połączenie z bazą lokalną
-        string conn_str = Properties.Settings.Default.dbConnectionString;
+        //string conn_str = HelpDesk_Desktop.Properties.Settings.Default.dbConnectionString;
 
         // Połączenie z bazą online
-        //string conn_str = Properties.Settings.Default.HelpDeskDBConnectionString;
+        string conn_str = HelpDesk_Desktop.Properties.Settings.Default.HelpDeskDBConnectionString;
 
         SqlDataReader rdr;
 
@@ -100,9 +100,15 @@ namespace WindowsFormsApplication1
                     else
                     {
                         Specjalista Specjalista = new Specjalista();
-                        Specjalista.label1.Text = upraw.ToString();
+                        Specjalista.label2.Text = TLogin.Text;
+                        Specjalista.label4.Text = upraw.ToString();
+                        Specjalista.label28.Text = imie + " " + nazwisko;
+                        Specjalista.label29.Text = telefon;
+                        Specjalista.label30.Text = username2;
+                        Specjalista.label26.Text = imie + Specjalista.label26.Text;
+                        Specjalista.label37.Text = pass;
                         Specjalista.ShowDialog();
-
+                        
                         Application.ExitThread();
                     }
                 }

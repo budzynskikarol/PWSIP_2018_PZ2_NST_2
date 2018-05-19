@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -37,8 +37,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -63,11 +61,9 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button6 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -83,6 +79,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -133,12 +132,13 @@
             // button9
             // 
             this.button9.Enabled = false;
-            this.button9.Location = new System.Drawing.Point(147, 429);
+            this.button9.Location = new System.Drawing.Point(183, 384);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 19;
             this.button9.Text = "Wiadomości";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // label2
             // 
@@ -158,6 +158,7 @@
             this.button10.TabIndex = 6;
             this.button10.Text = "Zmiana hasła";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // label24
             // 
@@ -168,27 +169,6 @@
             this.label24.TabIndex = 28;
             this.label24.Text = "id_zgloszenia";
             this.label24.Visible = false;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(18, 374);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(242, 20);
-            this.textBox5.TabIndex = 14;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.ForeColor = System.Drawing.Color.Red;
-            this.label23.Location = new System.Drawing.Point(15, 345);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(126, 13);
-            this.label23.TabIndex = 25;
-            this.label23.Text = "Proszę wybrać kategorię!";
-            this.label23.Visible = false;
             // 
             // label22
             // 
@@ -251,6 +231,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label4);
             this.tabPage3.Controls.Add(this.label40);
             this.tabPage3.Controls.Add(this.label41);
             this.tabPage3.Controls.Add(this.label2);
@@ -460,33 +441,26 @@
             this.comboBox3.Size = new System.Drawing.Size(242, 21);
             this.comboBox3.TabIndex = 13;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(16, 358);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(71, 13);
-            this.label14.TabIndex = 18;
-            this.label14.Text = "Data dodania";
-            // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(66, 429);
+            this.button5.Location = new System.Drawing.Point(102, 413);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 18;
             this.button5.Text = "Wyczyść";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button7
             // 
             this.button7.Enabled = false;
-            this.button7.Location = new System.Drawing.Point(100, 400);
+            this.button7.Location = new System.Drawing.Point(102, 384);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 16;
             this.button7.Text = "Aktualizuj";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // comboBox2
             // 
@@ -504,24 +478,15 @@
             this.comboBox2.Size = new System.Drawing.Size(242, 21);
             this.comboBox2.TabIndex = 12;
             // 
-            // button6
-            // 
-            this.button6.Enabled = false;
-            this.button6.Location = new System.Drawing.Point(181, 400);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 17;
-            this.button6.Text = "Usuń";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(19, 400);
+            this.button8.Location = new System.Drawing.Point(21, 384);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 23);
             this.button8.TabIndex = 15;
             this.button8.Text = "Dodaj";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label7
             // 
@@ -638,27 +603,26 @@
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.Size = new System.Drawing.Size(566, 458);
             this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.Click += new System.EventHandler(this.dataGridView2_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.AutoSize = true;
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.textBox10);
             this.groupBox2.Controls.Add(this.label24);
             this.groupBox2.Controls.Add(this.button9);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.comboBox3);
-            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button6);
             this.groupBox2.Controls.Add(this.button7);
             this.groupBox2.Controls.Add(this.comboBox2);
             this.groupBox2.Controls.Add(this.button8);
@@ -696,6 +660,38 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "label1";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(723, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "label4";
+            this.label4.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(18, 322);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(242, 20);
+            this.textBox1.TabIndex = 31;
+            this.textBox1.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(15, 345);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 13);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "Proszę wybrać kategorię!";
+            this.label5.Visible = false;
+            // 
             // Specjalista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -707,6 +703,7 @@
             this.Name = "Specjalista";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HelpDesk - Panel Specjalisty";
+            this.Load += new System.EventHandler(this.Specjalista_Load);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -733,8 +730,6 @@
         public System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
@@ -759,11 +754,9 @@
         private System.Windows.Forms.Label label27;
         public System.Windows.Forms.Label label26;
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox7;
@@ -779,5 +772,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label13;
         public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label5;
     }
 }

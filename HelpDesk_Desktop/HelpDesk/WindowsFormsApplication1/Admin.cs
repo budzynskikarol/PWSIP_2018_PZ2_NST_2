@@ -30,10 +30,10 @@ namespace WindowsFormsApplication1
         private void setConnection()
         {
             // Połączenie z bazą lokalną
-            string conn_str = Properties.Settings.Default.dbConnectionString;
+            //string conn_str = HelpDesk_Desktop.Properties.Settings.Default.dbConnectionString;
 
             // Połączenie z bazą online
-            //string conn_str = Properties.Settings.Default.HelpDeskDBConnectionString;
+            string conn_str = HelpDesk_Desktop.Properties.Settings.Default.HelpDeskDBConnectionString;
 
             con = new SqlConnection(conn_str);
             con.Open();
@@ -416,10 +416,8 @@ namespace WindowsFormsApplication1
                 String sql = "INSERT INTO AspNetUsers (Id, Imie, Nazwisko, PhoneNumber, UserName, PasswordHash, KategorieId) " +
                 "VALUES (@Id, @Imie, @Nazwisko, @PhoneNumber, @UserName, @PasswordHash, @KategorieId)";
                 this.updateDatabase(sql, 0);
-                button1.Enabled = false;
-                button2.Enabled = true;
-                button3.Enabled = true;
             }
+            resetAll();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -501,7 +499,12 @@ namespace WindowsFormsApplication1
 
         private void button10_Click(object sender, EventArgs e)
         {
-            groupBox3.Visible = true;
+            if(!groupBox3.Visible)
+            {
+                groupBox3.Visible = true;
+            }
+            else
+            groupBox3.Visible = false;
         }
 
         private void button11_Click(object sender, EventArgs e)

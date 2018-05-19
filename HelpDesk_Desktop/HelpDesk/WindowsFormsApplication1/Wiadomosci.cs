@@ -24,10 +24,10 @@ namespace WindowsFormsApplication1
         private void setConnection()
         {
             // Połączenie z bazą lokalną
-            string conn_str = Properties.Settings.Default.dbConnectionString;
+            //string conn_str = Properties.Settings.Default.dbConnectionString;
 
             // Połączenie z bazą online
-            //string conn_str = Properties.Settings.Default.HelpDeskDBConnectionString;
+            string conn_str = HelpDesk_Desktop.Properties.Settings.Default.HelpDeskDBConnectionString;
 
             con = new SqlConnection(conn_str);
             con.Open();

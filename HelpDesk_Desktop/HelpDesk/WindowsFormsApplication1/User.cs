@@ -27,10 +27,10 @@ namespace WindowsFormsApplication1
         private void setConnection()
         {
             // Połączenie z bazą lokalną
-            string conn_str = Properties.Settings.Default.dbConnectionString;
+            //string conn_str = HelpDesk_Desktop.Properties.Settings.Default.dbConnectionString;
 
             // Połączenie z bazą online
-            //string conn_str = Properties.Settings.Default.HelpDeskDBConnectionString;
+            string conn_str = HelpDesk_Desktop.Properties.Settings.Default.HelpDeskDBConnectionString;
 
             con = new SqlConnection(conn_str);
             con.Open();
@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
 
         private void updateDataGrid1()
         {
-            SqlCommand command = new SqlCommand("SELECT z.Id, z.Nazwa, z.Opis, z.Komentarz, s.Nazwa, k.Nazwa, z.DataDodania FROM Zgloszenias AS z INNER JOIN Statusies AS s ON z.StatusyId=s.Id INNER JOIN Kategories AS k ON z.KategorieId=k.Id WHERE z.Uzytkownik = @Uzytkownik", con);
+            SqlCommand command = new SqlCommand("SELECT z.Id, z.Nazwa, z.Opis, z.Komentarz, s.Nazwa, k.Nazwa, z.DataDodania FROM Zgloszenias AS z INNER JOIN Statusies AS s ON z.StatusyId=s.Id INNER JOIN Kategories AS k ON z.KategorieId=k.Id WHERE z.Uzytkownik=@Uzytkownik", con);
             command.Parameters.Clear();
             command.Parameters.Add("@Uzytkownik", System.Data.SqlDbType.NVarChar).Value = label2.Text;
             SqlDataReader dr = command.ExecuteReader();
@@ -247,7 +247,12 @@ namespace WindowsFormsApplication1
 
         private void button10_Click(object sender, EventArgs e)
         {
-            groupBox3.Visible = true;
+            if (!groupBox3.Visible)
+            {
+                groupBox3.Visible = true;
+            }
+            else
+                groupBox3.Visible = false;
         }
 
         private void button11_Click(object sender, EventArgs e)
