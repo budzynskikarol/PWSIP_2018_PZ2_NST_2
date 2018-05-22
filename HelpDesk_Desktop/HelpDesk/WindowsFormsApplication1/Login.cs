@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1
                 }
                 catch (SqlException err)
                 {
-                    MessageBox.Show("Błąd połączenia z bazą danych");  
+                    MessageBox.Show("Błąd połączenia z bazą danych", "Komunikat", MessageBoxButtons.OK, MessageBoxIcon.Warning);  
                 }
                 if (connection.State == System.Data.ConnectionState.Open)
                 {
@@ -113,7 +113,7 @@ namespace WindowsFormsApplication1
                     }
                 }
                 else
-                    MessageBox.Show("Niepoprawny login lub hasło!");
+                    MessageBox.Show("Niepoprawny login lub hasło!", "Komunikat", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

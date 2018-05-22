@@ -228,7 +228,7 @@ namespace WindowsFormsApplication1
             int n = command.ExecuteNonQuery();
             if (n > 0)
             {
-                MessageBox.Show(msg);
+                MessageBox.Show(msg, "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.updateDataGrid();
                 this.updateDataGrid1();
                 if(state == 6)
@@ -415,6 +415,11 @@ namespace WindowsFormsApplication1
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            if(label37.Text == "!QAZ2wsx")
+            {
+                MessageBox.Show("Korzystasz z domyślnego hasła: !QAZ2wsx.\nProszę zmienić hasło!", "Komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                groupBox3.Visible = true;
+            }
             this.updateDataGrid();
             this.updateDataGrid1();
             this.textBox5.Text = DateTime.Now.ToString();
@@ -469,7 +474,7 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Usunąć użytkownika " + textBox4.Text + "?", "Komunikat", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Usunąć użytkownika " + textBox4.Text + "?", "Komunikat", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
                 String sql = "DELETE FROM AspNetUsers " +
@@ -491,7 +496,7 @@ namespace WindowsFormsApplication1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Usunąć wybrane zgłoszenie?", "Komunikat", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Usunąć wybrane zgłoszenie?", "Komunikat", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
                 String sql = "DELETE FROM Zgloszenias " +

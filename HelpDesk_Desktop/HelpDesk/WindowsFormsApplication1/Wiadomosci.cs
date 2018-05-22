@@ -70,7 +70,7 @@ namespace WindowsFormsApplication1
             int n = command.ExecuteNonQuery();
             if (n > 0)
             {
-                MessageBox.Show(msg);
+                MessageBox.Show(msg, "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.updateDataGrid();
             }
         }

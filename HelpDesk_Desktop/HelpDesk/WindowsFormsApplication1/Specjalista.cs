@@ -157,7 +157,7 @@ namespace WindowsFormsApplication1
             int n = command.ExecuteNonQuery();
             if (n > 0)
             {
-                MessageBox.Show(msg);
+                MessageBox.Show(msg, "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.updateDataGrid1();
                 if (state == 6)
                 {
@@ -266,6 +266,11 @@ namespace WindowsFormsApplication1
 
         private void Specjalista_Load(object sender, EventArgs e)
         {
+            if (label37.Text == "!QAZ2wsx")
+            {
+                MessageBox.Show("Korzystasz z domyślnego hasła: !QAZ2wsx.\nProszę zmienić hasło!", "Komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                groupBox3.Visible = true;
+            }
             this.updateDataGrid1();
             this.textBox10.Text = this.label2.Text;
             Timer timer = new Timer();
