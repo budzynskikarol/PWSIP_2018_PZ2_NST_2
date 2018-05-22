@@ -165,6 +165,13 @@ namespace WindowsFormsApplication1
                     command.Parameters.Add("@UserName", System.Data.SqlDbType.NVarChar).Value = textBox4.Text;
                     command.Parameters.Add("@PasswordHash", System.Data.SqlDbType.NVarChar).Value = textBox6.Text;
                     command.Parameters.Add("@KategorieId", System.Data.SqlDbType.Int).Value = id_kategorii;
+                    command.Parameters.Add("@EmailConfirmed", System.Data.SqlDbType.Bit).Value = false;
+                    command.Parameters.Add("@PhoneNumberConfirmed", System.Data.SqlDbType.Bit).Value = false;
+                    command.Parameters.Add("@TwoFactorEnabled", System.Data.SqlDbType.Bit).Value = false;
+                    command.Parameters.Add("@LockoutEnabled", System.Data.SqlDbType.Bit).Value = false;
+                    command.Parameters.Add("@AccessFailedCount", System.Data.SqlDbType.Int).Value = 0;
+                    command.Parameters.Add("@Email", System.Data.SqlDbType.NVarChar).Value = textBox4.Text;
+                    command.Parameters.Add("@SecurityStamp", System.Data.SqlDbType.NVarChar).Value = RandomString(40);
                     break;
                 case 1:
                     GetIdKat(comboBox1.Text);
@@ -441,8 +448,8 @@ namespace WindowsFormsApplication1
             check_boxy();
             if(wszystko_ok)
             {
-                String sql = "INSERT INTO AspNetUsers (Id, Imie, Nazwisko, PhoneNumber, UserName, PasswordHash, KategorieId) " +
-                "VALUES (@Id, @Imie, @Nazwisko, @PhoneNumber, @UserName, @PasswordHash, @KategorieId)";
+                String sql = "INSERT INTO AspNetUsers (Id, Imie, Nazwisko, PhoneNumber, UserName, PasswordHash, KategorieId, EmailConfirmed, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEnabled, AccessFailedCount, Email, SecurityStamp) " +
+                "VALUES (@Id, @Imie, @Nazwisko, @PhoneNumber, @UserName, @PasswordHash, @KategorieId, @EmailConfirmed, @PhoneNumberConfirmed, @TwoFactorEnabled, @LockoutEnabled, @AccessFailedCount, @Email, @SecurityStamp)";
                 this.updateDatabase(sql, 0);
                 resetAll();
             }

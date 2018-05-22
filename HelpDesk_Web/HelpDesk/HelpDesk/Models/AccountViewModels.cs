@@ -84,8 +84,6 @@ namespace HelpDesk.Models
         public int KategorieId { get; set; }
 
         public int ChangedPassword { get; set; }
-
-
         //[Required]
         //[StringLength(100, ErrorMessage = "{0} musi zawierać co najmniej następującą liczbę znaków: {2}.", MinimumLength = 6)]
         //[DataType(DataType.Password)]
