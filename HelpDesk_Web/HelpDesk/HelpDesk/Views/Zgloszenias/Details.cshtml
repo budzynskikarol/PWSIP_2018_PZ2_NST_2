@@ -1,4 +1,4 @@
-﻿@model HelpDesk.Models.Zgloszenia
+﻿@model HelpDesk.Models.ZgloszeniaViewModels
 
 @{
     ViewBag.Title = "Details";
@@ -14,7 +14,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Kategorie.Nazwa)
+            @Html.DisplayFor(model => model.Zgloszenia.Kategorie.Nazwa)
         </dd>
 
         <dt>
@@ -22,31 +22,31 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Statusy.Nazwa)
+            @Html.DisplayFor(model => model.Zgloszenia.Statusy.Nazwa)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Nazwa)
+            @Html.DisplayNameFor(model => model.Zgloszenia.Nazwa)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nazwa)
+            @Html.DisplayFor(model => model.Zgloszenia.Nazwa)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Opis)
+            @Html.DisplayNameFor(model => model.Zgloszenia.Opis)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Opis)
+            @Html.DisplayFor(model => model.Zgloszenia.Opis)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Komentarz)
+            @Html.DisplayNameFor(model => model.Zgloszenia.Komentarz)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Komentarz)
+            @Html.DisplayFor(model => model.Zgloszenia.Komentarz)
         </dd>
 
     </dl>
@@ -54,8 +54,67 @@
 <p>
     @if (ViewBag.edycja == 1)
     {
-        @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }, new {@class = "btn btn-warning" })
+        @Html.ActionLink("Edytuj", "Edit", new { id = Model.Zgloszenia.Id }, new {@class = "btn btn-warning" })
     }
     
     @Html.ActionLink("Powrót", "Index", null, new { @class = "btn btn-primary" })
 </p>
+
+<hr />
+<br />
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Data Dodania
+            </th>
+            <th>
+                Treść
+            </th>
+            <th>
+                Nadawca
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Wiadomosci)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataDodania)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tresc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nadawca)
+                </td>
+            </tr>
+        }
+
+    </table>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Zgloszenia</h4>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Wiad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Wiad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Wiad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @Html.HiddenFor(m => m.idwiad)
+        @Html.HiddenFor(m => m.nad)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Details" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+</div>

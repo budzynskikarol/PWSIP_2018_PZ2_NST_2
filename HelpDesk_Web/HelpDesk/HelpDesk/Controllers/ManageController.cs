@@ -15,6 +15,7 @@ namespace HelpDesk.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -217,6 +218,15 @@ namespace HelpDesk.Controllers
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
+            ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+            //if (user.ChangedPassword == 0)
+            //{
+            //    ViewBag.ukryj = 1;
+            //}
+            //else
+            //{
+            //    ViewBag.ukryj = 0;
+            //}
             return View();
         }
 
@@ -226,10 +236,17 @@ namespace HelpDesk.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
+            ApplicationUser userr = db.Users.Find(User.Identity.GetUserId());
+
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
+
+            //if (userr.ChangedPassword == 0)
+            //{
+            //    model.OldPassword = "!QAZ2wsx";
+            //}
             var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
             if (result.Succeeded)
             {

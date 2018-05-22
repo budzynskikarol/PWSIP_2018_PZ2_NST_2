@@ -224,6 +224,7 @@
     <Compile Include="Models\Statusy.cs" />
     <Compile Include="Models\Wiadomosci.cs" />
     <Compile Include="Models\Zgloszenia.cs" />
+    <Compile Include="Models\ZgloszeniaViewModels.cs" />
     <Compile Include="MojeHaslo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

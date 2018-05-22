@@ -13,6 +13,7 @@ namespace HelpDesk.Models
         public string Nazwisko { get; set; }
         public Kategorie Kategorie { get; set; }
         public int KategorieId { get; set; }
+        public int ChangedPassword { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

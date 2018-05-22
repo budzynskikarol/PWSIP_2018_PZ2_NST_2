@@ -41,6 +41,7 @@ namespace HelpDesk.Controllers
         // GET: Zgloszenias/Details/5
         public ActionResult Details(int? id)
         {
+            var model = new ZgloszeniaViewModels();
             ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
 
             if (id == null)
@@ -63,7 +64,35 @@ namespace HelpDesk.Controllers
                 ViewBag.edycja = 1;
             }
 
-            return View(zgloszenia);
+            model.Wiadomosci = db.Wiadomoscis.Where(z => z.ZgloszeniaId == id).ToList();
+            model.Zgloszenia = zgloszenia;
+            model.idwiad = (int)id;
+            model.nad = user.UserName;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Details (ZgloszeniaViewModels model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var wiad = new Wiadomosci();
+                    wiad.DataDodania = DateTime.Now;
+                    wiad.ZgloszeniaId = model.idwiad;
+                    wiad.Nadawca = model.nad;
+                    wiad.Tresc = model.Wiad;
+                    db.Wiadomoscis.Add(wiad);
+                    db.SaveChanges();
+                    return RedirectToAction("Details", new { id = model.idwiad });
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         // GET: Zgloszenias/Create
