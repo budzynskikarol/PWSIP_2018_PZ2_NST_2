@@ -45,7 +45,7 @@ namespace HelpDesk.Migrations
                     Nazwisko = lastname,
                     Email = email,
                     UserName = email,
-                    //ChangePasswordDate = DateTime.Now.AddDays(-1),
+                    ChangedPassword = 1,
                     KategorieId = 9
                 };
 

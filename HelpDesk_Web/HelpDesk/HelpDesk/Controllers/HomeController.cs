@@ -1,9 +1,11 @@
 ﻿using HelpDesk.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static HelpDesk.Controllers.ManageController;
 
 namespace HelpDesk.Controllers
 {
@@ -11,8 +13,16 @@ namespace HelpDesk.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
+        public ActionResult Index(ManageMessageId? message)
         {
+            ViewBag.StatusMessage =
+                   message == ManageMessageId.ChangePasswordSuccess ? "Zmieniono hasło."
+                   : "";
+            //ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+            //if (user.ChangedPassword == 0)
+            //{
+            //    return RedirectToAction("ChangePassword", "Manage");
+            //}
             return View();
         }
 
@@ -30,5 +40,7 @@ namespace HelpDesk.Controllers
 
             return View();
         }
+
+        
     }
 }

@@ -20,22 +20,30 @@ namespace HelpDesk.Controllers
         public ActionResult Index()
         {
             ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
-            if (user.KategorieId == 8)
+            if (user.ChangedPassword == 1)
             {
-                var zgloszenias = db.Zgloszenias.Include(z => z.Kategorie).Include(z => z.Statusy).Where(z=>z.Uzytkownik == User.Identity.Name);
-                return View(zgloszenias.ToList());
+                if (user.KategorieId == 8)
+                {
+                    var zgloszenias = db.Zgloszenias.Include(z => z.Kategorie).Include(z => z.Statusy).Where(z => z.Uzytkownik == User.Identity.Name);
+                    return View(zgloszenias.ToList());
 
-            }
-            else if(user.KategorieId == 9)
-            {
-                var zgloszenias = db.Zgloszenias.Include(z => z.Kategorie).Include(z => z.Statusy);
-                return View(zgloszenias.ToList());
+                }
+                else if (user.KategorieId == 9)
+                {
+                    var zgloszenias = db.Zgloszenias.Include(z => z.Kategorie).Include(z => z.Statusy);
+                    return View(zgloszenias.ToList());
+                }
+                else
+                {
+                    var zgloszenias = db.Zgloszenias.Include(z => z.Kategorie).Include(z => z.Statusy).Where(z => z.KategorieId == user.KategorieId || z.Uzytkownik == User.Identity.Name);
+                    return View(zgloszenias.ToList());
+                }
             }
             else
             {
-                var zgloszenias = db.Zgloszenias.Include(z => z.Kategorie).Include(z => z.Statusy).Where(z=>z.KategorieId == user.KategorieId || z.Uzytkownik == User.Identity.Name);
-                return View(zgloszenias.ToList());
+                return RedirectToAction("ChangePassword", "Manage");
             }
+            
         }
 
         // GET: Zgloszenias/Details/5
@@ -43,32 +51,39 @@ namespace HelpDesk.Controllers
         {
             var model = new ZgloszeniaViewModels();
             ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
-
-            if (id == null)
+            if (user.ChangedPassword == 1)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Zgloszenia zgloszenia = db.Zgloszenias.Find(id);
-            if (zgloszenia == null)
-            {
-                return HttpNotFound();
-            }
-            Kategorie a = db.Kategories.Find(zgloszenia.KategorieId);
-            ViewBag.Kategoria = a.Nazwa;
-            Statusy b = db.Statusys.Find(zgloszenia.StatusyId);
-            ViewBag.Status = b.Nazwa;
-            ViewBag.edycja = 0;
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Zgloszenia zgloszenia = db.Zgloszenias.Find(id);
+                if (zgloszenia == null)
+                {
+                    return HttpNotFound();
+                }
+                Kategorie a = db.Kategories.Find(zgloszenia.KategorieId);
+                ViewBag.Kategoria = a.Nazwa;
+                Statusy b = db.Statusys.Find(zgloszenia.StatusyId);
+                ViewBag.Status = b.Nazwa;
+                ViewBag.edycja = 0;
 
-            if (user.KategorieId == zgloszenia.KategorieId || user.KategorieId == 9)
-            {
-                ViewBag.edycja = 1;
-            }
+                if (user.KategorieId == zgloszenia.KategorieId || user.KategorieId == 9)
+                {
+                    ViewBag.edycja = 1;
+                }
 
-            model.Wiadomosci = db.Wiadomoscis.Where(z => z.ZgloszeniaId == id).ToList();
-            model.Zgloszenia = zgloszenia;
-            model.idwiad = (int)id;
-            model.nad = user.UserName;
-            return View(model);
+                model.Wiadomosci = db.Wiadomoscis.Where(z => z.ZgloszeniaId == id).ToList();
+                model.Zgloszenia = zgloszenia;
+                model.idwiad = (int)id;
+                model.nad = user.UserName;
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("ChangePassword", "Manage");
+
+            }
         }
 
         [HttpPost]
@@ -98,9 +113,17 @@ namespace HelpDesk.Controllers
         // GET: Zgloszenias/Create
         public ActionResult Create()
         {
-            ViewBag.KategorieId = new SelectList(db.Kategories.Where(z=> z.Id < 8), "Id", "Nazwa");
-            ViewBag.StatusyId = new SelectList(db.Statusys, "Id", "Nazwa");
-            return View();
+            ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+            if (user.ChangedPassword == 1)
+            {
+                ViewBag.KategorieId = new SelectList(db.Kategories.Where(z => z.Id < 8), "Id", "Nazwa");
+                ViewBag.StatusyId = new SelectList(db.Statusys, "Id", "Nazwa");
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("ChangePassword", "Manage");
+            }
         }
 
         // POST: Zgloszenias/Create
@@ -129,18 +152,27 @@ namespace HelpDesk.Controllers
         // GET: Zgloszenias/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+            if (user.ChangedPassword == 1)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Zgloszenia zgloszenia = db.Zgloszenias.Find(id);
+                if (zgloszenia == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.KategorieId = new SelectList(db.Kategories, "Id", "Nazwa", zgloszenia.KategorieId);
+                ViewBag.StatusyId = new SelectList(db.Statusys, "Id", "Nazwa", zgloszenia.StatusyId);
+                return View(zgloszenia);
             }
-            Zgloszenia zgloszenia = db.Zgloszenias.Find(id);
-            if (zgloszenia == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("ChangePassword", "Manage");
+
             }
-            ViewBag.KategorieId = new SelectList(db.Kategories, "Id", "Nazwa", zgloszenia.KategorieId);
-            ViewBag.StatusyId = new SelectList(db.Statusys, "Id", "Nazwa", zgloszenia.StatusyId);
-            return View(zgloszenia);
         }
 
         // POST: Zgloszenias/Edit/5
@@ -172,16 +204,25 @@ namespace HelpDesk.Controllers
         // GET: Zgloszenias/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+            if (user.ChangedPassword == 1)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Zgloszenia zgloszenia = db.Zgloszenias.Find(id);
+                if (zgloszenia == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(zgloszenia);
             }
-            Zgloszenia zgloszenia = db.Zgloszenias.Find(id);
-            if (zgloszenia == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("ChangePassword", "Manage");
             }
-            return View(zgloszenia);
+            
         }
 
         // POST: Zgloszenias/Delete/5
@@ -194,6 +235,7 @@ namespace HelpDesk.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {
