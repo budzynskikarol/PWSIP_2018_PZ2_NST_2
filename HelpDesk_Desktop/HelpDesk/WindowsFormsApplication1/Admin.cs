@@ -571,7 +571,10 @@ namespace WindowsFormsApplication1
 
                 button1.Enabled = false;
                 button2.Enabled = true;
-                button3.Enabled = true;
+                if (!(textBox4.Text == label1.Text))
+                {
+                    button3.Enabled = true;
+                } else button3.Enabled = false;
                 textBox4.ReadOnly = true;
             }
         }
