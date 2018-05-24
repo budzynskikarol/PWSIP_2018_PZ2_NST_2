@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+  </configSections>
+  <connectionStrings>
+    <add name="Model1Container" connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.\SQLEXPRESS;attachdbfilename=|DataDirectory|\Database1.mdf;integrated security=True;user instance=True;multipleactiveresultsets=True;App=EntityFramework&quot;"
+      providerName="System.Data.EntityClient" />
+    <add name="WindowsFormsApplication1.Properties.Settings.dbConnectionString"
+      connectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\db.mdf;Integrated Security=True;Connect Timeout=30"
+      providerName="System.Data.SqlClient" />
+    <add name="WindowsFormsApplication1.Properties.Settings.HelpDeskDBConnectionString"
+      connectionString="Data Source=rras.database.windows.net;Initial Catalog=HelpDeskDB;Persist Security Info=True;User ID=helpdeskadmin;Password=!QAZ2wsx"
+      providerName="System.Data.SqlClient" />
+  </connectionStrings>
+</configuration>
