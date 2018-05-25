@@ -4,59 +4,62 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2> </h2>
 
 <p>
-    @Html.ActionLink("Dodaj zgłoszenie", "Create",null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Dodaj zgłoszenie", "Create", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Data Dodania
-        </th>
-        <th>
-            Kategoria
-        </th>
-        <th>
-            Status
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nazwa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Opis)
-        </th>
-        <th>User</th>
-        <th></th>
-    </tr>
+<div class="widget-body">
+    <table id="dt_basic" class="table table-bordered table-hover">
+        <tr>
+            <th width="10%">
+                Data Dodania
+            </th>
+            <th width="10%">
+                Kategoria
+            </th>
+            <th width="10%">
+                Status
+            </th>
+            <th width="20%">
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th width="35%">
+                @Html.DisplayNameFor(model => model.Opis)
+            </th>
+            <th width="10%">Użytkownik</th>
+            <th width="5%"></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataDodania)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kategorie.Nazwa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Statusy.Nazwa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nazwa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Opis)
-        </td>
-        <td>
-            @Html.DisplayFor(m => item.Uzytkownik)
-        </td>
-        
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
-            @Html.ActionLink("Szczegóły", "Details", new { id = item.Id })
-            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataDodania)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kategorie.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Statusy.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opis)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Uzytkownik)
+                </td>
 
-</table>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
+                    @Html.ActionLink("Szczegóły", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -235,6 +235,10 @@ namespace HelpDesk.Controllers
                 {
                     return HttpNotFound();
                 }
+                Kategorie a = db.Kategories.Find(zgloszenia.KategorieId);
+                ViewBag.Kategoria = a.Nazwa;
+                Statusy b = db.Statusys.Find(zgloszenia.StatusyId);
+                ViewBag.Status = b.Nazwa;
                 return View(zgloszenia);
             }
             else
@@ -250,6 +254,13 @@ namespace HelpDesk.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Zgloszenia zgloszenia = db.Zgloszenias.Find(id);
+            int x = db.Wiadomoscis.Where(m => m.ZgloszeniaId == id).Count();
+            for (int i = 0; i < x; i++)
+            {
+                Wiadomosci wiad = db.Wiadomoscis.Where(m => m.ZgloszeniaId == id).FirstOrDefault();
+                db.Wiadomoscis.Remove(wiad);
+                wiad = null;
+            }
             db.Zgloszenias.Remove(zgloszenia);
             db.SaveChanges();
             return RedirectToAction("Index");
