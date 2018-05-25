@@ -54,9 +54,15 @@
 <p>
     @if (ViewBag.edycja == 1)
     {
-        @Html.ActionLink("Edytuj", "Edit", new { id = Model.Zgloszenia.Id }, new {@class = "btn btn-warning" })
+        @Html.ActionLink("Edytuj", "Edit", new { id = Model.Zgloszenia.Id }, new { @class = "btn btn-warning" })
     }
-    
+    @if (ViewBag.adm == 1)
+    {
+        @Html.ActionLink("Usuń", "Delete", new { id = Model.Zgloszenia.Id }, new { @class = "btn btn-warning" })
+    }
+
+
+
     @Html.ActionLink("Powrót", "Index", null, new { @class = "btn btn-primary" })
 </p>
 

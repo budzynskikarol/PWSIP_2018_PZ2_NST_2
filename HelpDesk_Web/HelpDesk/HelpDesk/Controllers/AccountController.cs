@@ -141,7 +141,6 @@ namespace HelpDesk.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
         public ActionResult Register()
         {
             ViewBag.KategorieId = new SelectList(db.Kategories, "Id", "Nazwa");

@@ -51,33 +51,46 @@ namespace HelpDesk.Controllers
         {
             var model = new ZgloszeniaViewModels();
             ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+            Zgloszenia zgl = db.Zgloszenias.Find(id);
             if (user.ChangedPassword == 1)
             {
-                if (id == null)
+                if (id == null || user.KategorieId == zgl.KategorieId || user.UserName == zgl.Uzytkownik || user.KategorieId == 9)
+                {
+                    if (zgl == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    Kategorie a = db.Kategories.Find(zgl.KategorieId);
+                    ViewBag.Kategoria = a.Nazwa;
+                    Statusy b = db.Statusys.Find(zgl.StatusyId);
+                    ViewBag.Status = b.Nazwa;
+                    ViewBag.edycja = 0;
+                    ViewBag.adm = 0;
+
+                    if (user.KategorieId == zgl.KategorieId)
+                    {
+                        ViewBag.edycja = 1;
+                    }
+
+                    if (user.KategorieId == 9)
+                    {
+                        ViewBag.edycja = 1;
+                        ViewBag.adm = 1;
+                    }
+
+
+                    model.Wiadomosci = db.Wiadomoscis.Where(z => z.ZgloszeniaId == id).ToList();
+                    model.Zgloszenia = zgl;
+                    model.idwiad = (int)id;
+                    model.nad = user.UserName;
+                    return View(model);
+
+                }
+                else
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Zgloszenia zgloszenia = db.Zgloszenias.Find(id);
-                if (zgloszenia == null)
-                {
-                    return HttpNotFound();
-                }
-                Kategorie a = db.Kategories.Find(zgloszenia.KategorieId);
-                ViewBag.Kategoria = a.Nazwa;
-                Statusy b = db.Statusys.Find(zgloszenia.StatusyId);
-                ViewBag.Status = b.Nazwa;
-                ViewBag.edycja = 0;
 
-                if (user.KategorieId == zgloszenia.KategorieId || user.KategorieId == 9)
-                {
-                    ViewBag.edycja = 1;
-                }
-
-                model.Wiadomosci = db.Wiadomoscis.Where(z => z.ZgloszeniaId == id).ToList();
-                model.Zgloszenia = zgloszenia;
-                model.idwiad = (int)id;
-                model.nad = user.UserName;
-                return View(model);
             }
             else
             {
@@ -153,20 +166,26 @@ namespace HelpDesk.Controllers
         public ActionResult Edit(int? id)
         {
             ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+            Zgloszenia zgl = db.Zgloszenias.Find(id);
+
             if (user.ChangedPassword == 1)
             {
-                if (id == null)
+                if (id == null || user.KategorieId == zgl.KategorieId || user.KategorieId == 9)
+                {
+                    if (zgl == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    ViewBag.KategorieId = new SelectList(db.Kategories, "Id", "Nazwa", zgl.KategorieId);
+                    ViewBag.StatusyId = new SelectList(db.Statusys, "Id", "Nazwa", zgl.StatusyId);
+                    return View(zgl);
+                }
+                else
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
                 }
-                Zgloszenia zgloszenia = db.Zgloszenias.Find(id);
-                if (zgloszenia == null)
-                {
-                    return HttpNotFound();
-                }
-                ViewBag.KategorieId = new SelectList(db.Kategories, "Id", "Nazwa", zgloszenia.KategorieId);
-                ViewBag.StatusyId = new SelectList(db.Statusys, "Id", "Nazwa", zgloszenia.StatusyId);
-                return View(zgloszenia);
+                
             }
             else
             {
@@ -207,7 +226,7 @@ namespace HelpDesk.Controllers
             ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
             if (user.ChangedPassword == 1)
             {
-                if (id == null)
+                if (id == null || user.KategorieId != 9)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
