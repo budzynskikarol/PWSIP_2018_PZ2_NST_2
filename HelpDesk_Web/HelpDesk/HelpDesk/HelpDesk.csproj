@@ -223,8 +223,26 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AboutUs.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\creative.css" />
+    <Content Include="Content\creative.min.css" />
+    <Content Include="Content\imac.css" />
+    <Content Include="Content\ipad.css" />
+    <Content Include="Content\iphone.css" />
+    <Content Include="Content\macbook.css" />
+    <Content Include="Content\Zdjecia\help deskp4.jpg" />
+    <Content Include="Content\Zdjecia\help1.png" />
+    <Content Include="Content\Zdjecia\help2.png" />
+    <Content Include="Content\Zdjecia\help3.png" />
+    <Content Include="Content\Zdjecia\hepdesk1.jpg" />
+    <Content Include="Content\Zdjecia\hpdesk.jpg" />
+    <Content Include="Content\Zdjecia\hpdsk1.png" />
+    <Content Include="Content\Zdjecia\hpdsk2.png" />
+    <Content Include="Content\Zdjecia\hpdsk3.png" />
+    <Content Include="Content\Zdjecia\Info.png" />
+    <Content Include="Content\Zdjecia\plik2.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -235,6 +253,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\creative.js" />
+    <Content Include="Scripts\creative.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -245,6 +265,10 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Views\Home\imac.html" />
+    <Content Include="Views\Home\ipad.html" />
+    <Content Include="Views\Home\iphone.html" />
+    <Content Include="Views\Home\macbook.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -1,7 +1,116 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+</br>
+</br>
+<h1>Informacje o pordukcie Help Desk</h1>
+<p align="center">
+    <i>
+        <font face="Courier New">
+            <b>
+                " Rozwiązania typu „helpdesk”, w których zarządzanie incydentami jest
+                realizowane bez uwzględniania sformalizowanych procesów obejmujących inne obszary IT
+                , są zwykle skoncentrowane na tym, aby klient jak najszybciej uzyskał pomoc i rozwiązanie
+                problemu pozwalające na kontynuowanie jego pracy "
+        </font>
+    </i></b>
+</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+
+                <div class="panel panel-default">
+
+                    <span class="side-tab" data-target="#tab1" data-toggle="tab" role="tab" aria-expanded="false">
+                        <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <h4 class="panel-title">Do głównych zadań konsultantów takich projektów należy:</h4>
+                        </div>
+                    </span>
+
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ol type="A">
+                                <li> udzielanie ogólnych porad, np. technicznych,</li>
+                                <li> dotyczących produktu lub usługi </li>
+                                <li> przyjmowanie zgłoszeń reklamacji lub skarg oraz ich rejestracja </li>
+                                <li> tworzenie bazy najczęściej zadawanych pytań (FAQ) </li>
+                                <li> rejestracja i obsługa korespondencji email.</li>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+
+                    <span class="side-tab" data-target="#tab2" data-toggle="tab" role="tab" aria-expanded="false">
+                        <div class="panel-heading" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <h4 class="panel-title collapsed">Oferujemy również integracje z Twoimi systemami:</h4>
+                        </div>
+                    </span>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <ol type="I">
+                                <li> rejestracji zgłoszeń</li>
+                                <li> śledzenia napraw </li>
+                                <li> rejestracji korespondencji z innymi </li>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+
+                    <span class="side-tab" data-target="#tab3" data-toggle="tab" role="tab" aria-expanded="false">
+                        <div class="panel-heading" role="tab" id="headingThree" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <h4 class="panel-title">Korzyści dla naszych partnerów : </h4>
+                        </div>
+                    </span>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <ol type="1">
+                                <li>usprawnienie procesu obsługi technicznej klienta</li>
+                                <li>optymalizacja wykorzystania zasobów osobowych</li>
+                                <li> doskonalenie wizerunku firmy jako nowoczesnej i dbającej o klienta</li>
+                                <li>obniżenie kosztów</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-8">
+
+            <div class="md-macbook-pro md-glare">
+                <div class="md-lid">
+                    <div class="md-camera"></div>
+                    <div class="md-screen">
+
+                        <div class="tab-featured-image">
+                            <div class="tab-content">
+                                <div class="tab-pane  in active" id="tab1">
+                                    <img src="~/Content/Zdjecia/hpdsk1.png" class="img img-responsive">
+                                </div>
+                                <div class="tab-pane " id="tab2">
+                                    <img src="~/Content/Zdjecia/hpdsk2.png" class="img img-responsive">
+                                </div>
+                                <div class="tab-pane fade" id="tab3">
+                                    <img src="~/Content/Zdjecia/hpdsk3.png" class="img img-responsive">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md-base"></div>
+            </div>
+
+        </div>
+    </div>
+</div> 
