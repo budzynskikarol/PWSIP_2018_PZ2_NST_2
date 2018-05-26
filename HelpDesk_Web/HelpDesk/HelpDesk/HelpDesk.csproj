@@ -212,64 +212,64 @@
     <Compile Include="Migrations\201805120729342_DodanieAdminaDoTabeliKategorii.Designer.cs">
       <DependentUpon>201805120729342_DodanieAdminaDoTabeliKategorii.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805142118093_DodanieModeluDlaWiadomosci.cs" />
+    <Compile Include="Migrations\201805142118093_DodanieModeluDlaWiadomosci.Designer.cs">
+      <DependentUpon>201805142118093_DodanieModeluDlaWiadomosci.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805221909204_DodanieKolummyDoSpawdzeniaHasla.cs" />
+    <Compile Include="Migrations\201805221909204_DodanieKolummyDoSpawdzeniaHasla.Designer.cs">
+      <DependentUpon>201805221909204_DodanieKolummyDoSpawdzeniaHasla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Kategorie.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Statusy.cs" />
+    <Compile Include="Models\Wiadomosci.cs" />
     <Compile Include="Models\Zgloszenia.cs" />
+    <Compile Include="Models\ZgloszeniaViewModels.cs" />
+    <Compile Include="MojeHaslo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\AboutUs.css" />
+    <None Include="Content\bootstrap.css.old" />
+    <None Include="Content\bootstrap.min.css.old" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\creative.css" />
-    <Content Include="Content\creative.min.css" />
-    <Content Include="Content\imac.css" />
-    <Content Include="Content\ipad.css" />
-    <Content Include="Content\iphone.css" />
-    <Content Include="Content\macbook.css" />
-    <Content Include="Content\Zdjecia\help deskp4.jpg" />
-    <Content Include="Content\Zdjecia\help1.png" />
-    <Content Include="Content\Zdjecia\help2.png" />
-    <Content Include="Content\Zdjecia\help3.png" />
-    <Content Include="Content\Zdjecia\hepdesk1.jpg" />
-    <Content Include="Content\Zdjecia\hpdesk.jpg" />
-    <Content Include="Content\Zdjecia\hpdsk1.png" />
-    <Content Include="Content\Zdjecia\hpdsk2.png" />
-    <Content Include="Content\Zdjecia\hpdsk3.png" />
-    <Content Include="Content\Zdjecia\Info.png" />
-    <Content Include="Content\Zdjecia\plik2.jpg" />
+    <Content Include="Content\dataTables.bootstrap.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Content\Site.css.old" />
+    <None Include="Scripts\bootstrap.js.old" />
+    <None Include="Scripts\bootstrap.min.js.old" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\creative.js" />
-    <Content Include="Scripts\creative.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\dataTables.bootstrap.js" />
+    <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\MVCDataTableJqueryBootStrap-ui.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Views\Home\imac.html" />
-    <Content Include="Views\Home\ipad.html" />
-    <Content Include="Views\Home\iphone.html" />
-    <Content Include="Views\Home\macbook.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -283,24 +283,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Zgloszenias\Create.cshtml" />
@@ -308,6 +295,7 @@
     <Content Include="Views\Zgloszenias\Details.cshtml" />
     <Content Include="Views\Zgloszenias\Edit.cshtml" />
     <Content Include="Views\Zgloszenias\Index.cshtml" />
+    <Content Include="Views\Home\admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -337,6 +325,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805120729342_DodanieAdminaDoTabeliKategorii.resx">
       <DependentUpon>201805120729342_DodanieAdminaDoTabeliKategorii.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805142118093_DodanieModeluDlaWiadomosci.resx">
+      <DependentUpon>201805142118093_DodanieModeluDlaWiadomosci.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805221909204_DodanieKolummyDoSpawdzeniaHasla.resx">
+      <DependentUpon>201805221909204_DodanieKolummyDoSpawdzeniaHasla.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

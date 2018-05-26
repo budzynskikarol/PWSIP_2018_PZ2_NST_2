@@ -60,7 +60,7 @@ namespace HelpDesk.Models
 
     public class AddPhoneNumberViewModel
     {
-        [Required]
+        //[Required]
         [Phone]
         [Display(Name = "Numer telefonu")]
         public string Number { get; set; }
@@ -68,11 +68,11 @@ namespace HelpDesk.Models
 
     public class VerifyPhoneNumberViewModel
     {
-        [Required]
+        //[Required]
         [Display(Name = "Kod")]
         public string Code { get; set; }
 
-        [Required]
+        //[Required]
         [Phone]
         [Display(Name = "Numer telefonu")]
         public string PhoneNumber { get; set; }

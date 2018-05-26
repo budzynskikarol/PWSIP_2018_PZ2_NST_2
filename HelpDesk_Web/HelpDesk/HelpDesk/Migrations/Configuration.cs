@@ -45,8 +45,8 @@ namespace HelpDesk.Migrations
                     Nazwisko = lastname,
                     Email = email,
                     UserName = email,
-                    //ChangePasswordDate = DateTime.Now.AddDays(-1),
-                    KategorieId = 8
+                    ChangedPassword = 1,
+                    KategorieId = 9
                 };
 
                 var wynik = userManager.Create(Admin, password);

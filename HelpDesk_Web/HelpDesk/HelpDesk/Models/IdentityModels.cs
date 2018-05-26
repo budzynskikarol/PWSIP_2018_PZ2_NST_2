@@ -13,6 +13,7 @@ namespace HelpDesk.Models
         public string Nazwisko { get; set; }
         public Kategorie Kategorie { get; set; }
         public int KategorieId { get; set; }
+        public int ChangedPassword { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -28,7 +29,7 @@ namespace HelpDesk.Models
         public DbSet<Kategorie> Kategories { get; set; }
         public DbSet<Statusy> Statusys { get; set; }
         public DbSet<Zgloszenia> Zgloszenias { get; set; }
-
+        public DbSet<Wiadomosci> Wiadomoscis { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
